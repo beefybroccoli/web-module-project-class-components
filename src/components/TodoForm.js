@@ -9,6 +9,16 @@ export default class TodoForm extends React.Component {
 
   cb_onSubmit = (event) => {
     event.preventDefault();
+
+    //return data to App.js
+    this.props.cb_addNewTask({
+      task: this.state.input,
+      completed: false,
+      id: Date.now(),
+    });
+
+    //reset form
+    this.setState({ input: "" });
   };
 
   cb_onChange = (event) => {

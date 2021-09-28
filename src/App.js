@@ -4,15 +4,33 @@ import TodoForm from "./components/TodoForm";
 import TodoList from "./components/TodoList";
 
 class App extends React.Component {
+  constructor() {
+    super();
+    this.state = { array: [...sample_data] };
+  }
   // you will need a place to store your state in this component.
   // design `App` to be the parent component of your application.
   // this component is going to take care of state, and any change handlers you need to work with your state
+
+  /**
+   * cb_addNewTask
+   */
+  cb_addNewTask = (input_object) => {
+    this.setState({ array: [...this.state.array, input_object] });
+  };
+
+  /**
+   *
+   */
+
+  /** */
+
   render() {
     return (
       <div>
         <h2>Welcome to your Todo App!</h2>
-        <TodoForm />
-        <TodoList data={sample_data} />
+        <TodoForm cb_addNewTask={this.cb_addNewTask} />
+        <TodoList data={this.state.array} />
       </div>
     );
   }
