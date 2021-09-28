@@ -9,7 +9,13 @@ export default class TodoList extends React.Component {
         <h3>TodoList.js</h3>
         {this.props.data &&
           this.props.data.map((eachTask) => {
-            return <Todo key={eachTask.id} data={eachTask} />;
+            return (
+              <Todo
+                key={eachTask.id}
+                data={eachTask}
+                cb_modifyTask={this.props.cb_modifyTask}
+              />
+            );
           })}
       </div>
     );

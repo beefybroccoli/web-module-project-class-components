@@ -22,6 +22,17 @@ class App extends React.Component {
   /**
    *
    */
+  cb_modifyTask = (input_object) => {
+    this.setState({
+      array: this.state.array.map((eachTask) => {
+        if (input_object.id === eachTask.id) {
+          return { ...eachTask, completed: !eachTask.completed };
+        } else {
+          return eachTask;
+        }
+      }),
+    });
+  };
 
   /** */
 
@@ -30,7 +41,7 @@ class App extends React.Component {
       <div>
         <h2>Welcome to your Todo App!</h2>
         <TodoForm cb_addNewTask={this.cb_addNewTask} />
-        <TodoList data={this.state.array} />
+        <TodoList data={this.state.array} cb_modifyTask={this.cb_modifyTask} />
       </div>
     );
   }

@@ -1,11 +1,16 @@
 import React from "react";
 export default class Todo extends React.Component {
+  cb_onClick = (event) => {
+    event.stopPropagation();
+    this.props.cb_modifyTask(this.props.data);
+  };
+
   render() {
     return (
-      <div>
-        <h3>Todo.js</h3>
+      <div onClick={this.cb_onClick}>
         <p>
-          {this.props.data.id} - {this.props.data.task}
+          {this.props.data.id} - {this.props.data.task} -{" "}
+          {this.props.data.completed ? "true" : "false"}
         </p>
       </div>
     );
