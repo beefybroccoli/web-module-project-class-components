@@ -34,7 +34,18 @@ class App extends React.Component {
     });
   };
 
-  /** */
+  /**
+   * Clear Tasks
+   */
+  cb_clearTasks = (event) => {
+    this.setState({
+      array: this.state.array.filter((eachTask) => {
+        if (eachTask.completed === false) {
+          return eachTask;
+        } //end if
+      }),
+    });
+  };
 
   render() {
     return (
@@ -42,6 +53,7 @@ class App extends React.Component {
         <h2>Welcome to your Todo App!</h2>
         <TodoForm cb_addNewTask={this.cb_addNewTask} />
         <TodoList data={this.state.array} cb_modifyTask={this.cb_modifyTask} />
+        <button onClick={this.cb_clearTasks}>Clear Tasks</button>
       </div>
     );
   }
