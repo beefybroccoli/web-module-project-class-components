@@ -13,19 +13,20 @@ class App extends React.Component {
   // this component is going to take care of state, and any change handlers you need to work with your state
 
   /**
-   * cb_addNewTask
+   * cb_addNewTask - add a new task to the global state
    */
   cb_addNewTask = (input_object) => {
     this.setState({ array: [...this.state.array, input_object] });
   };
 
   /**
-   *
+   *cb_modifyTask - change the completed boolean to its negation
    */
   cb_modifyTask = (input_object) => {
     this.setState({
       array: this.state.array.map((eachTask) => {
         if (input_object.id === eachTask.id) {
+          //change completed boolean to its negation
           return { ...eachTask, completed: !eachTask.completed };
         } else {
           return eachTask;

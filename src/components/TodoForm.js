@@ -22,7 +22,7 @@ export default class TodoForm extends React.Component {
   };
 
   cb_onChange = (event) => {
-    console.log("Form.js event.target.value = ", event.target.value);
+    // console.log("Form.js event.target.value = ", event.target.value);
     this.setState({ input: event.target.value });
   };
   render() {
